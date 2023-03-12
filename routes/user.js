@@ -1,17 +1,17 @@
 // This File will be responsible for all the routes related to single-user starting with /user.
-const path=require('path');
+const path=require('path'); // node core module
+const rootDir=require('../utils/path'); // importing exports from file.
 
-
-const express=require('express');
-const router=express.Router();
+const express=require('express'); // Prod-Dependency
+const router=express.Router();     
 
 router.get('/',(req,res,next)=>{
-res.sendFile(path.join(__dirname,'../','views','/userMainPage.html'));
+res.sendFile(path.join(rootDir,'views','/userMainPage.html'));
 
 });
 
 router.get('/new-Note',(req,res,next)=>{
- res.sendFile(path.join(__dirname,'../','views','newNote.html'));
+ res.sendFile(path.join(rootDir,'views','newNote.html'));
 });
 
 router.get('/all-Notes',(req,res,next)=>{

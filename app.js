@@ -11,20 +11,16 @@ const app=express();
 
 // Middleware to Parse Incoming Request.
 app.use(bodyParser.urlencoded({extended:false}));
+// Middleware to Serve Static Files.Exposing the Public directory.
+app.use(express.static(path.join(__dirname,'public')));
+
 
 // All routes starting with /user
 app.use('/user',userRouter.userRouter);
 
-
-
-
-
-
-
 // All routes starting with /. 
 app.use('/',(req,res,next)=>{
 res.status(404).sendFile(path.join(__dirname,'views','404.html'));
-
 });
 
 
