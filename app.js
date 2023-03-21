@@ -25,9 +25,15 @@ app.use(express.static(path.join(__dirname,'public')));
 // All routes starting with /user
 app.use('/user',userRouter.userRouter);
 
+// Default - Landing Page Route
+app.get('/',(req,res,next)=>{
+    res.render('landingPage.ejs',{pageTitle:'My-Notes-App',pageHeading:'Welcome to My-Notes-App'});
+})
+
+
 // All routes starting with /. 
 app.use('/',(req,res,next)=>{
-res.status(404).render('404.ejs',{pageTitle:'Page Not Found Baby'});
+res.status(404).render('404.ejs',{pageTitle:'Page Not Found',pageHeading:'Page not Found'});
 });
 
 
