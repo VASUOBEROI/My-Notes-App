@@ -4,6 +4,7 @@ const express=require('express');         //prod-dependencies
 const bodyParser=require('body-parser'); //prod-dependencies.
 
 const userRouter=require('./routes/user');
+const errorController=require('./controllers/errorController');
 
 
 
@@ -32,9 +33,7 @@ app.get('/',(req,res,next)=>{
 
 
 // All routes starting with /. 
-app.use('/',(req,res,next)=>{
-res.status(404).render('404.ejs',{pageTitle:'Page Not Found',pageHeading:'Page not Found'});
-});
+app.use('/',errorController.get404Page);
 
 
 app.listen(3000);
