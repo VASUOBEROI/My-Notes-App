@@ -1,5 +1,5 @@
 
-const notes=[];
+const Notes=require('../models/notesModel.js');
 
 
 const getLandingPage=(req,res,next)=>{
@@ -10,10 +10,15 @@ const getNewNotePage=(req,res,next)=>{
     res.render('newNote',{pageTitle:'New Note',pageHeading:'Hi User Enter the Note'});
    }
 const getAllNotesPage=(req,res,next)=>{
+    const notes=Notes.fetchAll();
     res.render('allNotes.ejs',{pageTitle:'User-All-Notes',pageHeading:'Hi User Check Your Notes',allNotes:notes})
     }
+
+    // POST==> user/AllNotes
     const postAllNotesPage=(req,res,next)=>{
-        notes.push(req.body);
+        // notes.push(req.body);
+        const newNote=new Notes(req.body.title,req.body.description);
+        newNote.save();
     console.log(req.body);
     res.redirect('/user/all-Notes');
     }
