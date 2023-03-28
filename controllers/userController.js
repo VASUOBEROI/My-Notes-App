@@ -10,8 +10,13 @@ const getNewNotePage=(req,res,next)=>{
     res.render('newNote',{pageTitle:'New Note',pageHeading:'Hi User Enter the Note'});
    }
 const getAllNotesPage=(req,res,next)=>{
-    const notes=Notes.fetchAll();
-    res.render('allNotes.ejs',{pageTitle:'User-All-Notes',pageHeading:'Hi User Check Your Notes',allNotes:notes})
+    Notes.fetchAll((notes)=>{
+        res.render('allNotes.ejs',{pageTitle:'User-All-Notes',pageHeading:'Hi User Check Your Notes',allNotes:notes})
+    });
+//     Notes.fetchAll((notes)=>{
+// res.render('allNotes.ejs',{pageTitle:'User-All-Notes',pageHeading:'Hi User Check Your Notes',allNotes:notes})
+//     });
+   
     }
 
     // POST==> user/AllNotes
