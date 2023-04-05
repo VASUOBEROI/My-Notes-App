@@ -17,6 +17,7 @@ module.exports=class Notes{
    
    save()
    {
+    this.id=Math.random().toString();
     // Pushing the object
     //    notes.push(this);
     
@@ -50,6 +51,18 @@ module.exports=class Notes{
         }
           cb(JSON.parse(fileContent));
     })
+   }
+   static fetchOne(id,cb)
+   {
+       fs.readFile(storePath,(err,fileContent)=>{
+        let notes=[];
+        if(!err)
+        {
+            notes=JSON.parse(fileContent); 
+        }
+        let note=notes.find(p=>p.id==id);
+        cb(note);
+       })
    }
 
 }

@@ -17,6 +17,9 @@ router.get('/new-Note',userController.getNewNotePage);
 //  user/all-Notes ==> Get
 router.get('/all-Notes',userController.getAllNotesPage);
 
+// user/all-Notes/randomId ===> Get
+router.get('/all-Notes/:notesId',userController.getNotePage);
+
 //   user/all-Notes ==>Post
 router.post('/all-Notes',userController.postAllNotesPage);
 

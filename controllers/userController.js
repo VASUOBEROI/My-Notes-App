@@ -28,9 +28,24 @@ const getAllNotesPage=(req,res,next)=>{
     res.redirect('/user/all-Notes');
     }
 
+    const getNotePage=(req,res,next)=>{
+        const notesId=req.params.notesId;
+        console.log("Note Id "+notesId);
+        Notes.fetchOne(notesId,note=>{
+           console.log(note);
+        })
+
+
+
+        res.render('notes-details.ejs',{pageTitle:"Note-Detail",pageHeading:"Check Details about Note"});
+    }
+
+
+    
 module.exports={
     getLandingPage:getLandingPage,
     getNewNotePage:getNewNotePage,
     getAllNotesPage:getAllNotesPage,
-    postAllNotesPage:postAllNotesPage
+    postAllNotesPage:postAllNotesPage,
+    getNotePage:getNotePage
 }
