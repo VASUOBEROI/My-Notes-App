@@ -9,6 +9,11 @@ const getLandingPage=(req,res,next)=>{
 const getNewNotePage=(req,res,next)=>{
     res.render('newNote',{pageTitle:'New Note',pageHeading:'Hi User Enter the Note'});
    }
+
+// We are passing Callback function to fetchAll,Once Some Async Task has been Performed in FetchAll,
+// From there call-me-back will be executed, which is passing an argument that we will get here.
+
+
 const getAllNotesPage=(req,res,next)=>{
     Notes.fetchAll((notes)=>{
         res.render('allNotes.ejs',{pageTitle:'User-All-Notes',pageHeading:'Hi User Check Your Notes',allNotes:notes})
@@ -31,7 +36,7 @@ const getAllNotesPage=(req,res,next)=>{
     const getNotePage=(req,res,next)=>{
         const notesId=req.params.notesId;
         console.log("Note Id "+notesId);
-        Notes.fetchOne(notesId,note=>{
+        Notes.fetchOne(notesId,(note)=>{
            console.log(note);
         })
 
