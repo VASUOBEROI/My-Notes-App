@@ -61,6 +61,7 @@ module.exports=class Notes{
             notes=JSON.parse(fileContent); 
         }
         let note=notes.find(p=>p.id==id);
+        console.log(note);
         cb(id,note);
        })
    }
